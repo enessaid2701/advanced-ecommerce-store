@@ -1,25 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { Container, Grid, Typography } from '@mui/material';
+import Filters from './components/Filters';
+import ProductList from './components/ProductList';
+import { Provider } from 'react-redux';
+import store from './redux/store';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider store={store}>
+      <Container>
+        <Typography variant="h4" gutterBottom>
+          Advanced E-commerce Store
+        </Typography>
+        <Grid container spacing={4}>
+          <Grid item xs={12} md={3}>
+            <Filters />
+          </Grid>
+          <Grid item xs={12} md={9}>
+            <ProductList />
+          </Grid>
+        </Grid>
+      </Container>
+    </Provider>
   );
-}
+};
 
 export default App;
